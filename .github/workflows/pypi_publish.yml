@@ -89,6 +89,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install cibuildwheel
           python -m pip install packaging
+          python -m pip install setuptools
           echo "CIBW_BEFORE_ALL=pip install cmake" >> $GITHUB_ENV
           PYTH_VER=${{ matrix.python-version }}
           PYTH_VER=${PYTH_VER//.}
@@ -108,6 +109,8 @@ jobs:
           set -vxeuo pipefail
           cd env/python
           python -VV
+          python -m pip install packaging
+          python -m pip install setuptools
           python setup.py bdist_wheel
           ls -la dist/*
           mkdir -p ../../dist
