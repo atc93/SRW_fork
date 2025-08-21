@@ -29,7 +29,7 @@ else
 	endif
 endif
 
-# HG30112023
+#HG30112023
 CUDA_PATH ?= /usr/local/cuda
 CUDA_MATHLIBS_PATH ?= /usr/local/cuda
 NVCC = $(CUDA_PATH)/bin/nvcc
@@ -92,7 +92,7 @@ OBJ +=  timerec.o track.o srerror.o
 
 # src/lib
 OBJ +=  srwlib.o
-# HG30112023
+#HG30112023
 ifeq ($(MODE), cuda)
 OBJ += auxgpu.o
 endif
@@ -112,9 +112,11 @@ PRG= libsrw.a
 	$(CXX) $(CFLAGS) -c $<  
 
 %.o: $(SRW_SRC_GENESIS_DIR)/%.c
-	$(CC) $(CFLAGS) -c $<  
+#	$(CC) $(CFLAGS) -c $<  
+#HG16062025
+	$(CC) $(CFLAGS) -c $< -std=c99 -Wno-implicit-int
 
-# HG30112023
+#HG30112023
 ifeq ($(MODE), cuda)
 lib: $(CUDA_OBJ) $(OBJ)
 	$(NVCC) $(NVCFLAGS) -Xcompiler="$(SRW_CFLAGS)" -dlink -o srwl_link.o *.o $(LDFLAGS)

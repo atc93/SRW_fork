@@ -11,7 +11,8 @@ import sys
 import random #OC01082020
 import numpy as np
 
-from skimage.draw import polygon, circle, ellipse
+from skimage.draw import polygon, ellipse #HG16062025
+#from skimage.draw import polygon, circle, ellipse
 
 # ********************** Get the distance between point jj and the other points
 def get_r1j( px, py, jj):
