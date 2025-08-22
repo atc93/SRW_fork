@@ -26,6 +26,7 @@ else
 		OSFLAG += -D__MAC__
 		CC  ?= gcc
 		CXX ?= g++ -stdlib=libc++ -mmacosx-version-min=10.9
+		export CPLUS_INCLUDE_PATH=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1
 	endif
 endif
 
